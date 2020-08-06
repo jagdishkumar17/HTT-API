@@ -1,0 +1,2472 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HTT</name>
+    </assembly>
+    <members>
+        <member name="T:HTT.Controllers.HealthController">
+             <summary>
+            Health Controller
+             </summary>
+        </member>
+        <member name="M:HTT.Controllers.HealthController.#ctor(Microsoft.Extensions.Logging.ILogger{HTT.Controllers.HealthController},HTT.Manager.Contract.IHealthTrackService)">
+            <summary>
+            HealthController 
+            </summary>
+            <param name="logger"></param>
+            <param name="healthTrackService"></param>
+        </member>
+        <member name="M:HTT.Controllers.HealthController.CreateHealthTrack(HTT.ViewModels.HealthTrackViewModel)">
+            <summary>
+              Create a new health track
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:HTT.DependencyInjection">
+            <summary>
+            Class used to configure the repository classes
+            </summary>
+        </member>
+        <member name="T:HTT.Enums.EntityStatus">
+            <summary>
+            Use in database to set status of records
+            like general status, proposal, content, user invitation .
+            </summary>
+        </member>
+        <member name="F:HTT.Enums.EntityStatus.Active">
+            <summary>
+            records status
+            </summary>
+        </member>
+        <member name="F:HTT.Enums.EntityStatus.Deleted">
+            <summary>
+            Delete status
+            </summary>
+        </member>
+        <member name="F:HTT.Enums.EntityStatus.InProgress">
+            <summary>
+            proposal and content status
+            </summary>
+        </member>
+        <member name="F:HTT.Enums.EntityStatus.Finished">
+            <summary>
+            Finish
+            </summary>
+        </member>
+        <member name="F:HTT.Enums.EntityStatus.Accept">
+            <summary>
+            User Invitation status
+            </summary>
+        </member>
+        <member name="F:HTT.Enums.EntityStatus.Deny">
+            <summary>
+            Deny
+            </summary>
+        </member>
+        <member name="T:HTT.Enums.Status">
+            <summary>
+            Operation\Request status
+            </summary>
+        </member>
+        <member name="F:HTT.Enums.Status.Fail">
+            <summary>
+            fail
+            </summary>
+        </member>
+        <member name="F:HTT.Enums.Status.Success">
+            <summary>
+            Sucess
+            </summary>
+        </member>
+        <member name="F:HTT.Enums.Status.Error">
+            <summary>
+            Error
+            </summary>
+        </member>
+        <member name="T:HTT.Enums.Operation">
+            <summary>
+            Operation\Request type
+            </summary>
+        </member>
+        <member name="F:HTT.Enums.Operation.Create">
+            <summary>
+            Create
+            </summary>
+        </member>
+        <member name="F:HTT.Enums.Operation.Read">
+            <summary>
+            Read
+            </summary>
+        </member>
+        <member name="F:HTT.Enums.Operation.Update">
+            <summary>
+            Update
+            </summary>
+        </member>
+        <member name="F:HTT.Enums.Operation.Delete">
+            <summary>
+            Delete
+            </summary>
+        </member>
+        <member name="T:HTT.Enums.MailType">
+            <summary>
+            Type of mail to send
+            </summary>
+        </member>
+        <member name="F:HTT.Enums.MailType.Proposal">
+            <summary>
+            TBD
+            </summary>
+        </member>
+        <member name="F:HTT.Enums.MailType.Type2">
+            <summary>
+            TBD
+            </summary>
+        </member>
+        <member name="T:HTT.FilterTypes.PagingFilter">
+            <summary>
+            BaseFilter setting
+            </summary>
+        </member>
+        <member name="P:HTT.FilterTypes.PagingFilter.SortDirection">
+            <summary>
+            SortDirection
+            </summary>
+        </member>
+        <member name="P:HTT.FilterTypes.PagingFilter.Skip">
+            <summary>
+            Skip
+            </summary>
+        </member>
+        <member name="P:HTT.FilterTypes.PagingFilter.Take">
+            <summary>
+            Take
+            </summary>
+        </member>
+        <member name="P:HTT.FilterTypes.PagingFilter.SearchContent">
+            <summary>
+            SearchContent
+            </summary>
+        </member>
+        <member name="P:HTT.FilterTypes.PagingFilter.Category">
+            <summary>
+            Selected category for searching
+            </summary>
+        </member>
+        <member name="T:HTT.Helpers.AppEmailHelper">
+            <summary>
+            Email Helper
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.AppEmailHelper._client">
+            <summary>
+            Smtp client
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.AppEmailHelper._viewRenderService">
+            <summary>
+            view render service initialization
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.AppEmailHelper._appEmailSetting">
+            <summary>
+            email settings
+            </summary>
+        </member>
+        <member name="M:HTT.Helpers.AppEmailHelper.#ctor">
+            <summary>
+            Ctor
+            </summary>
+        </member>
+        <member name="M:HTT.Helpers.AppEmailHelper.InitMailMessage">
+            <summary>
+            Send Email
+            </summary>
+        </member>
+        <member name="M:HTT.Helpers.AppEmailHelper.PrepareMailBody">
+            <summary>
+            Prepare mail body
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppEmailHelper.ToMailAddresses">
+            <summary>
+            To mailing list
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppEmailHelper.CCMailAddresses">
+            <summary>
+            Cc mailing list
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppEmailHelper.BCCMailAddresses">
+            <summary>
+            Bcc mailing list
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppEmailHelper.FromMailAddress">
+            <summary>
+            From mail address
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppEmailHelper.Subject">
+            <summary>
+            Mail Subject
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppEmailHelper.MailType">
+            <summary>
+            Type/Category of mail
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppEmailHelper.MailBodyViewModel">
+            <summary>
+            Provide mail body viewmodel to prepare the email body as html template
+            </summary>
+        </member>
+        <member name="T:HTT.Helpers.AppEmailSetting">
+            <summary>
+            App email settings
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppEmailSetting.SmtpClient">
+            <summary>
+            smtp client
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppEmailSetting.Port">
+            <summary>
+            port
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppEmailSetting.NetworkUserName">
+            <summary>
+            network user name
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppEmailSetting.NetworkPassword">
+            <summary>
+            network password
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppEmailSetting.FromEmail">
+            <summary>
+            mail sent from address
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppEmailSetting.FromName">
+            <summary>
+            Mail sent from address name
+            </summary>
+        </member>
+        <member name="T:HTT.Helpers.AppFileDetail">
+            <summary>
+            Application file details
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.AppFileDetail._basePath">
+            <summary>
+            Uploaded file base path
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.AppFileDetail._filInfo">
+            <summary>
+            File info
+            </summary>
+        </member>
+        <member name="M:HTT.Helpers.AppFileDetail.#ctor(HTT.Models.FileDetail)">
+            <summary>
+            Ctor used for getting the file
+            </summary>
+            <param name="file"></param>
+        </member>
+        <member name="M:HTT.Helpers.AppFileDetail.#ctor(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Ctor used for setting/saving the file
+            </summary>
+            <param name="file"></param>
+        </member>
+        <member name="M:HTT.Helpers.AppFileDetail.FileToByteArray">
+            <summary>
+            File to byte array
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Helpers.AppFileDetail.SaveFile">
+            <summary>
+            Save file in directory
+            </summary>
+        </member>
+        <member name="M:HTT.Helpers.AppFileDetail.DeleteFile">
+            <summary>
+            Delete file from directory
+            </summary>
+        </member>
+        <member name="M:HTT.Helpers.AppFileDetail.CopyFile(HTT.Models.FileDetail,System.String)">
+            <summary>
+            Ctor used for copy the same file to upload with different id
+            </summary>
+            <param name="file"></param>
+            <param name="newFileId"></param>
+        </member>
+        <member name="P:HTT.Helpers.AppFileDetail.IsExist">
+            <summary>
+            Check file exist or not
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppFileDetail.UploadedName">
+            <summary>
+            File uploded or changed name
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppFileDetail.Length">
+            <summary>
+            File length
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppFileDetail.Name">
+            <summary>
+            File Name
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppFileDetail.LastModified">
+            <summary>
+            Last modified date of file
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppFileDetail.Content">
+            <summary>
+            Base 64 string
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppFileDetail.FileId">
+            <summary>
+            File id
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppFileDetail.fileToSave">
+            <summary>
+            Just to keep the refence of existing file
+            </summary>
+        </member>
+        <member name="T:HTT.Helpers.AppHelper">
+            <summary>
+            Application helper methods
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppHelper.HostingEnvironment">
+            <summary>
+            hosting env
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppHelper.Configuration">
+            <summary>
+            Configuration
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppHelper.ServiceProvider">
+            <summary>
+            Service provider for geeting injected services
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.AppHelper.CurrentDate">
+            <summary>
+            Current date time
+            </summary>
+        </member>
+        <member name="M:HTT.Helpers.AppHelper.GetUserClaimDetails(System.Security.Claims.ClaimsIdentity)">
+            <summary>
+            Get logged user claims
+            </summary>
+            <param name="identity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Helpers.AppHelper.GetColumnValue(System.String,System.Object)">
+            <summary>
+            Gets the column value.
+            </summary>
+            <param name="columnName">Name of the column.</param>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Helpers.AppHelper.SetColumnValue(System.String,System.Object,System.Object)">
+            <summary>
+            Sets the column value.
+            </summary>
+            <param name="columnName">Name of the column.</param>
+            <param name="entity">The entity.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:HTT.Helpers.AppHelper.MapAuditColumns(System.Object,System.Security.Claims.ClaimsIdentity)">
+            <summary>
+            Maps the audit columns.
+            </summary>
+            <param name="model">The model.</param>
+            <param name="identity"></param>
+        </member>
+        <member name="T:HTT.Helpers.CommonErrorMessages">
+            <summary>
+            Common messages
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.CommonErrorMessages.UnknownError">
+            <summary>
+            UnknownError
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.CommonErrorMessages.BadRequest">
+            <summary>
+            BadRequest
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.CommonErrorMessages.NoResultFound">
+            <summary>
+            NoResultFound
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.CommonErrorMessages.SomethingWentWrong">
+            <summary>
+            SomethingWentWrong
+            </summary>
+        </member>
+        <member name="T:HTT.Helpers.Constants">
+            <summary>
+            Application constants
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.Constants.CreatedBy">
+            <summary>
+            Added By Column
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.Constants.CreatedDate">
+            <summary>
+            Added Date Column
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.Constants.ModifiedBy">
+            <summary>
+            The modified by column
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.Constants.ModifiedDate">
+            <summary>
+            The modified date column
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.Constants.FilterCollaboratorCount">
+            <summary>
+            limited collaborator to be shown
+            </summary>
+        </member>
+        <member name="T:HTT.Helpers.ControlTypes">
+            <summary>
+            Control Types
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.ControlTypes.Title">
+            <summary>
+            Title Type
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.ControlTypes.SubTitle">
+            <summary>
+            SubTitle Type
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.ControlTypes.Image">
+            <summary>
+            Image Type
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.ControlTypes.TimeLine">
+            <summary>
+            TimeLine Type
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.ControlTypes.Description">
+            <summary>
+            Description Type
+            </summary>
+        </member>
+        <member name="T:HTT.Helpers.EmailTemplatePath">
+            <summary>
+            Email template path
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.EmailTemplatePath.Proposal">
+            <summary>
+            Proposal mail template path
+            </summary>
+        </member>
+        <member name="T:HTT.Helpers.FileActionMessages">
+            <summary>
+            Messages reslated to file action
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.FileActionMessages.CoverPhotoKey">
+            <summary>
+            FileCoverPhoto key
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.FileActionMessages.NoFileMatch">
+            <summary>
+            No file matched during file upload
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.FileActionMessages.CategoryNotFound">
+            <summary>
+            No category found during file upload
+            </summary>
+        </member>
+        <member name="T:HTT.Helpers.EntityMapperExtensions">
+            <summary>
+            Extension Methods for Entity Mapper.
+            </summary>
+        </member>
+        <member name="M:HTT.Helpers.EntityMapperExtensions.MapFromModel``2(System.Object,System.Collections.Generic.List{``0},System.String)">
+            <summary>
+            Map list of records to view model
+            </summary>
+            <typeparam name="TModel"></typeparam>
+            <typeparam name="TViewModel"></typeparam>
+            <param name="target"></param>
+            <param name="model"></param>
+            <param name="ignoreProperties"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Helpers.EntityMapperExtensions.MapFromModel``1(System.Object,``0,System.String)">
+            <summary>
+            Map single item from model
+            </summary>
+            <typeparam name="TModel"></typeparam>
+            <param name="target"></param>
+            <param name="model"></param>
+            <param name="ignoreProperties"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Helpers.EntityMapperExtensions.MapFromViewModel``1(System.Object,``0,System.Security.Claims.ClaimsIdentity,System.String)">
+            <summary>
+            Map from view model
+            </summary>
+            <typeparam name="TModel"></typeparam>
+            <param name="target"></param>
+            <param name="viewModel"></param>
+            <param name="identity"></param>
+            <param name="ignoreProperties"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HTT.Helpers.AvoidNullProps">
+            <summary>
+            Avoid null properties
+            </summary>
+        </member>
+        <member name="M:HTT.Helpers.AvoidNullProps.SetValue(System.Object,System.Object,System.Reflection.PropertyInfo,System.Reflection.PropertyInfo)">
+            <summary>
+            Implicit method to set value
+            </summary>
+            <param name="source"></param>
+            <param name="target"></param>
+            <param name="sp"></param>
+            <param name="tp"></param>
+        </member>
+        <member name="T:HTT.Helpers.IgnoreProperty">
+            <summary>
+            Ignore properties
+            </summary>
+        </member>
+        <member name="F:HTT.Helpers.IgnoreProperty._ignoreProperties">
+            <summary>
+            readonly local variable
+            </summary>
+        </member>
+        <member name="M:HTT.Helpers.IgnoreProperty.#ctor(System.String)">
+            <summary>
+            Properties ignore
+            </summary>
+            <param name="ignoreProperties"></param>
+        </member>
+        <member name="T:HTT.Helpers.ExceptionMiddlewareExtensions">
+            <summary>
+            Handling Errors Globally with the Built-In Middleware
+            </summary>
+        </member>
+        <member name="M:HTT.Helpers.ExceptionMiddlewareExtensions.ConfigureExceptionHandler(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Logging.ILogger{HTT.Startup})">
+            <summary>
+            configire global error handling 
+            </summary>
+            <param name="app"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="T:HTT.Helpers.IResult">
+            <summary>
+            IResult data return type
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.IResult.Operation">
+            <summary>
+            operation type property
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.IResult.Status">
+            <summary>
+            operation status
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.IResult.Message">
+            <summary>
+            Oparation message if any
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.IResult.Body">
+            <summary>
+            operation body
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.IResult.StatusCode">
+            <summary>
+            Http status code
+            </summary>
+        </member>
+        <member name="T:HTT.Helpers.Result">
+            <summary>
+            Result 
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.Result.Operation">
+            <summary>
+            operation type property
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.Result.Status">
+            <summary>
+            operation status
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.Result.Message">
+            <summary>
+            Oparation message if any
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.Result.Body">
+            <summary>
+            operation body
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.Result.StatusCode">
+            <summary>
+            Http status code
+            </summary>
+        </member>
+        <member name="M:HTT.Helpers.Result.ToString">
+            <summary>
+            return string 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:HTT.Helpers.WebHostExtension">
+            <summary>
+            web host extension to run migration and seed data 
+            </summary>
+        </member>
+        <member name="M:HTT.Helpers.WebHostExtension.MigrateDatabase(Microsoft.AspNetCore.Hosting.IWebHost)">
+            <summary>
+            run migrations
+            </summary>
+            <param name="webHost"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HTT.Helpers.Security.AzureAdExtensions">
+            <summary>
+            Azure Ad extension
+            </summary>
+        </member>
+        <member name="M:HTT.Helpers.Security.AzureAdExtensions.AddAzureAdAuthorization(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            In development mode, we must ensure that unauthenticated users have access.
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="T:HTT.Helpers.UserClaim">
+            <summary>
+            Logged user claim
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.UserClaim.Name">
+            <summary>
+            Logged user name
+            </summary>
+        </member>
+        <member name="P:HTT.Helpers.UserClaim.Email">
+            <summary>
+            Logged user email
+            </summary>
+        </member>
+        <member name="T:HTT.Manager.Contract.ICategoryService">
+            <summary>
+            interface for Category service 
+            </summary>
+        </member>
+        <member name="M:HTT.Manager.Contract.ICategoryService.GetCategoriesList">
+            <summary>
+            To get the categories list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Manager.Contract.ICategoryService.GetCategorieByCategoryId(System.Int32)">
+            <summary>
+            To get Category based on category id
+            </summary>
+            <param name="CategoryId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HTT.Manager.Contract.IContentDetailService">
+            <summary>
+            interface for ContentDetailService 
+            </summary>
+        </member>
+        <member name="M:HTT.Manager.Contract.IContentDetailService.GetAllContents(System.String)">
+            <summary>
+            Get all the contents
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Manager.Contract.IContentDetailService.GetContentDetailIdAsync(System.Int32)">
+            <summary>
+            Get / content detail by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Manager.Contract.IContentDetailService.CreateContent(HTT.ViewModels.ContentViewModel)">
+            <summary>
+            Create the content
+            </summary>
+            <param name="contentDetail"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Manager.Contract.IContentDetailService.UpdateContent(HTT.ViewModels.ContentViewModel)">
+            <summary>
+            Update the existing Content
+            </summary>
+            <param name="contentDetail"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Manager.Contract.IContentDetailService.GetContentBasedonSearchedText(HTT.FilterTypes.PagingFilter)">
+            <summary>
+            To get the filtered contents based on tag name
+            </summary>
+            <param name="pagingFilter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Manager.Contract.IContentDetailService.CopyContent(System.Int32)">
+            <summary>
+            Copy the content
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Manager.Contract.IContentDetailService.CreateContentCollaborators(System.Collections.Generic.List{HTT.ViewModels.CollaboratorViewModel})">
+            <summary>
+             This method is used to add the content collaborators
+            </summary>
+            <param name="listCollaborators"></param>
+            <returns></returns>   
+        </member>
+        <member name="M:HTT.Manager.Contract.IContentDetailService.DeleteCollaborator(System.Int32)">
+            <summary>
+            Delete the content collaborator
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HTT.Manager.Contract.IControlTypeService">
+            <summary>
+            interface for control types
+            </summary>
+        </member>
+        <member name="M:HTT.Manager.Contract.IControlTypeService.GetAllControlTypes">
+            <summary>
+            To get the control types list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:HTT.Manager.Contract.IFileDetailService">
+            <summary>
+            File Detail Service manager
+            </summary>
+        </member>
+        <member name="M:HTT.Manager.Contract.IFileDetailService.GetFileDetail(System.Guid,System.Boolean)">
+            <summary>
+            Get file details
+            </summary>
+            <param name="id"></param>
+            <param name="loadBase64"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Manager.Contract.IFileDetailService.SaveFileDetail(Microsoft.AspNetCore.Http.IFormFileCollection)">
+            <summary>
+            Save file details
+            </summary>
+            <param name="files"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Manager.Contract.IFileDetailService.DeleteFileDetail(System.Collections.Generic.List{System.String})">
+            <summary>
+            Delete file details
+            </summary>
+            <param name="oldUpladedNames"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HTT.Manager.Contract.IHealthTrackService">
+            <summary>
+            interface for ContentDetailService 
+            </summary>
+        </member>
+        <member name="M:HTT.Manager.Contract.IHealthTrackService.CreateHealthTrack(HTT.ViewModels.HealthTrackViewModel)">
+            <summary>
+             Create the CreateHealthTrack
+            </summary>
+            <param name="healthTrackViewModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HTT.Manager.Contract.IProposalDetailService">
+            <summary>
+            interface for ContentDetailService 
+            </summary>
+        </member>
+        <member name="M:HTT.Manager.Contract.IProposalDetailService.GetAllProposal(HTT.FilterTypes.PagingFilter)">
+            <summary>
+            Get all the proposal and its category
+            </summary>
+            <param name="pagingFilter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Manager.Contract.IProposalDetailService.GetProposalDetailIdAsync(System.Int32)">
+            <summary>
+            To get proposal details based on proposal id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Manager.Contract.IProposalDetailService.UpdateProposal(HTT.ViewModels.ProposalViewModel,Microsoft.AspNetCore.Http.IFormFileCollection)">
+            <summary>
+             Create the proposal
+            </summary>
+            <param name="proposal"></param>
+            <param name="filesModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Manager.Contract.IProposalDetailService.CreateProposal(HTT.ViewModels.ProposalViewModel,Microsoft.AspNetCore.Http.IFormFileCollection)">
+            <summary>
+            Update the existing proposal
+            </summary>
+            <param name="proposal"></param>
+            <param name="filesModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Manager.Contract.IProposalDetailService.GetUserBasedAllProposalAndCollaborator(System.String)">
+            <summary>
+            To get proposal list and its related users
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Manager.Contract.IProposalDetailService.CreateProposalCollaborators(System.Collections.Generic.List{HTT.ViewModels.CollaboratorViewModel})">
+            <summary>
+             This method is used to add proposal collaborators
+            </summary>
+            <param name="listCollaborators"></param>
+            <returns></returns>   
+        </member>
+        <member name="M:HTT.Manager.Contract.IProposalDetailService.DeleteProposalCollaborator(System.Int32)">
+            <summary>
+            Delete proposal collaborators
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HTT.Manager.Contract.ITagService">
+            <summary>
+            interface for Tag 
+            </summary>
+        </member>
+        <member name="M:HTT.Manager.Contract.ITagService.GetTagsList">
+            <summary>
+            To get the tags list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Manager.Contract.ITagService.GetTagByTagId(System.Int32)">
+            <summary>
+            To get Tag based on tag id
+            </summary>
+            <param name="TagId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HTT.Manager.Contract.IViewRenderService">
+            <summary>
+            View Render Service interface
+            </summary>
+        </member>
+        <member name="M:HTT.Manager.Contract.IViewRenderService.RenderToStringAsync(System.String,System.Object)">
+            <summary>
+            Render view to string
+            </summary>
+            <param name="viewName"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HTT.Manager.Service.HealthTrackService">
+            <summary>
+            use in with HealthController to manage HealthTrack entity
+            </summary>
+        </member>
+        <member name="F:HTT.Manager.Service.HealthTrackService._logger">
+            <summary>
+            logger HealthTrackService
+            </summary>
+        </member>
+        <member name="F:HTT.Manager.Service.HealthTrackService._healthTrackRepository">
+            <summary>
+            contract with HealthTrackRepository
+            </summary>
+        </member>
+        <member name="F:HTT.Manager.Service.HealthTrackService._principal">
+            <summary>
+            Claim Identity
+            </summary>
+        </member>
+        <member name="M:HTT.Manager.Service.HealthTrackService.#ctor(Microsoft.Extensions.Logging.ILogger{HTT.Manager.Service.HealthTrackService},System.Security.Principal.IPrincipal,HTT.Repository.Contracts.IHealthTrackRepository)">
+            <summary>
+            HealthTrackService constructor
+            </summary>
+            <param name="logger"></param>
+            <param name="principal"></param>
+            <param name="healthTrackRepository"></param>      
+        </member>
+        <member name="M:HTT.Manager.Service.HealthTrackService.CreateHealthTrack(HTT.ViewModels.HealthTrackViewModel)">
+            <summary>
+            Create Health Track
+            </summary>
+            <param name="healthTrackViewModel"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HTT.Models.BaseEntity">
+            <summary>
+            Base entity for audit columns
+            </summary>
+        </member>
+        <member name="P:HTT.Models.BaseEntity.CreatedBy">
+            <summary>
+            Creator, Owner
+            </summary>
+        </member>
+        <member name="P:HTT.Models.BaseEntity.CreatedDate">
+            <summary>
+            Record creation date
+            </summary>
+        </member>
+        <member name="P:HTT.Models.BaseEntity.ModifiedBy">
+            <summary>
+            Record modified by
+            </summary>
+        </member>
+        <member name="P:HTT.Models.BaseEntity.ModifiedDate">
+            <summary>
+            Record modification date
+            </summary>
+        </member>
+        <member name="P:HTT.Models.BaseEntity.Status">
+            <summary>
+            Record status
+            </summary>
+        </member>
+        <member name="T:HTT.Models.Category">
+            <summary>
+            Category
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Category.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Category.Name">
+            <summary>
+            category Name
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Category.Order">
+            <summary>
+            Category position\order
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Category.ContentDetails">
+            <summary>
+            Collection ContentDetail
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Category.ProposalCategories">
+            <summary>
+            Collection ProposalCategory
+            </summary>
+        </member>
+        <member name="T:HTT.Models.ContentCollaborator">
+            <summary>
+            Model use to interact with db to store content users
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentCollaborator.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentCollaborator.ContentDetailId">
+            <summary>
+            ContentDetail foreign key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentCollaborator.InvitedUserID">
+            <summary>
+            Invited user email 
+            </summary>
+        </member>
+        <member name="T:HTT.Models.ContentControl">
+            <summary>
+            Model use to interact with db to content controls
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentControl.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentControl.ContentDetailId">
+            <summary>
+            ContentDetail/id ForeignKey
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentControl.ControlTypeId">
+            <summary>
+            ControlType/id ForeignKey
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentControl.ControlValue">
+            <summary>
+            value of control like in case of textbox - text , image - path of image 
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentControl.ControlOrderNo">
+            <summary>
+            controls order under content detail
+            </summary>
+        </member>
+        <member name="T:HTT.Models.ContentDetail">
+            <summary>
+            Model use to interact with db to store content writer content details
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentDetail.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentDetail.TagsIDs">
+            <summary>
+            save tag - comma separated 
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentDetail.ValidUntil">
+            <summary>
+            valid date of content
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentDetail.ValidUntilFurtherNotice">
+            <summary>
+            Is valid 
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentDetail.ParentId">
+            <summary>
+            content id if content copied from available content
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentDetail.IsCheckedOut">
+            <summary>
+            set when any user open content in edit mode
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentDetail.CheckedOutBy">
+            <summary>
+            set when any user open content in edit mode
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentDetail.PhotoFile">
+            <summary>
+            content cover photo
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentDetail.ContentCollaborators">
+            <summary>
+            Collection ContentCollaborator
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ContentDetail.ContentControls">
+            <summary>
+            Collection ContentControl
+            </summary>
+        </member>
+        <member name="T:HTT.Models.ControlType">
+            <summary>
+            Control types 
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ControlType.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ControlType.Type">
+            <summary>
+            type of control like in case textbox - txt , image - img
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ControlType.Description">
+            <summary>
+            Description of control in detail
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ControlType.ContentControls">
+            <summary>
+            Collection ContentControl
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ControlType.ProposalCategoryControls">
+            <summary>
+            Collection ProposalCategoryControl
+            </summary>
+        </member>
+        <member name="T:HTT.Models.Employee">
+            <summary>
+            Employee
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Employee.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Employee.Name">
+            <summary>
+            Location Name
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Employee.EmpId">
+            <summary>
+            Location position\order
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Employee.Email">
+            <summary>
+            Location position\order
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Employee.Password">
+            <summary>
+            Location position\order
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Employee.Status">
+            <summary>
+            Record status
+            </summary>
+        </member>
+        <member name="T:HTT.Models.FileDetail">
+            <summary>
+            File Management
+            </summary>
+        </member>
+        <member name="P:HTT.Models.FileDetail.Id">
+            <summary>
+            primary key
+            File saved in local directory with same key and extension
+            </summary>
+        </member>
+        <member name="P:HTT.Models.FileDetail.FileName">
+            <summary>
+            File original name
+            </summary>
+        </member>
+        <member name="T:HTT.Models.HealthTrack">
+            <summary>
+            HealthTrack
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrack.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrack.ResidentialAddress">
+            <summary>
+            ResidentialAddress
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrack.PreExistHealthIssue">
+            <summary>
+            PreExistHealthIssue
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrack.ContactWithCovidPeople">
+            <summary>
+            ContactWithCovidPeople
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrack.TravelOustSideInLast15Days">
+            <summary>
+            TravelOustSideInLast15Days
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrack.SampleDate">
+            <summary>
+            TravelOustSideInLast15Days
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrack.LocationId">
+            <summary>
+            Location ForeignKey
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrack.ZoneId">
+            <summary>
+            Zone ForeignKey
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrack.EmployeeId">
+            <summary>
+            Zone ForeignKey
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrack.HealthTrackSymptoms">
+            <summary>
+            Collection HealthTrackSymptom
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrack.HealthTrackQuestions">
+            <summary>
+            Collection HealthTrackQuestionAnswer
+            </summary>
+        </member>
+        <member name="T:HTT.Models.HealthTrackQuestionAnswer">
+            <summary>
+            HealthTrack
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrackQuestionAnswer.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrackQuestionAnswer.HealthTrackId">
+            <summary>
+            HealthTrack ForeignKey
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrackQuestionAnswer.QuestionId">
+            <summary>
+            Symptom ForeignKey
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrackQuestionAnswer.value">
+            <summary>
+            value
+            </summary>
+        </member>
+        <member name="T:HTT.Models.HealthTrackSymptom">
+            <summary>
+            HealthTrack
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrackSymptom.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrackSymptom.HealthTrackId">
+            <summary>
+            HealthTrack ForeignKey
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrackSymptom.SymptomId">
+            <summary>
+            Symptom ForeignKey
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrackSymptom.value">
+            <summary>
+            value
+            </summary>
+        </member>
+        <member name="T:HTT.Models.Location">
+            <summary>
+            Location
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Location.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Location.Name">
+            <summary>
+            Location Name
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Location.Order">
+            <summary>
+            Location position\order
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Location.Status">
+            <summary>
+            Record status
+            </summary>
+        </member>
+        <member name="T:HTT.Models.Proposal">
+            <summary>
+            Model use to interact with db to store proposal detail
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Proposal.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Proposal.Title">
+            <summary>
+            proposal title
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Proposal.Date">
+            <summary>
+            date of proposal
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Proposal.CoverPhotoFile">
+            <summary>
+            proposal cover photo
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Proposal.IsCheckedOut">
+            <summary>
+            Use to keep track if proposal open by any user in edit mode then true
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Proposal.CheckedOutBy">
+            <summary>
+            Checked out user name - Open in edit mode 
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Proposal.ProposalCategories">
+            <summary>
+            Collection ProposalCategory
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Proposal.ProposalCollaborators">
+            <summary>
+            Collection ProposalCollaborator
+            </summary>
+        </member>
+        <member name="T:HTT.Models.ProposalCategory">
+            <summary>
+            Model use to interact with db to store proposal category detail
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCategory.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCategory.SectionTitle">
+            <summary>
+            section title place under category 
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCategory.ProposalId">
+            <summary>
+            Proposal ForeignKey
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCategory.CategoryId">
+            <summary>
+            Category ForeignKey
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCategory.ProposalCategoryControls">
+            <summary>
+            Collection ProposalCategoryControl
+            </summary>
+        </member>
+        <member name="T:HTT.Models.ProposalCategoryControl">
+            <summary>
+            Model use to interact with db to store proposal detail
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCategoryControl.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCategoryControl.ProposalCategoryId">
+            <summary>
+            ProposalCategory ForeignKey 
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCategoryControl.ControlTypeId">
+            <summary>
+            ControlType ForeignKey
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCategoryControl.ControlValue">
+            <summary>
+            value of control , in case of image control - path will store 
+            And in rest controls - text will store
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCategoryControl.ControlOrderNo">
+            <summary>
+            controls order under category
+            </summary>
+        </member>
+        <member name="T:HTT.Models.ProposalCategoryLayoutControl">
+            <summary>
+            Model use to interact with db to store proposal detail
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCategoryLayoutControl.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCategoryLayoutControl.ProposalCategoryControlId">
+            <summary>
+            ProposalCategoryControl ForeignKey 
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCategoryLayoutControl.ControlTypeId">
+            <summary>
+            ControlType ForeignKey
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCategoryLayoutControl.ControlValue">
+            <summary>
+            value of control , in case of image control - path will store 
+            And in rest controls - text will store
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCategoryLayoutControl.ControlOrderNo">
+            <summary>
+            controls order under category
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCategoryLayoutControl.ControlLocation">
+            <summary>
+            controls Location in layout
+            </summary>
+        </member>
+        <member name="T:HTT.Models.ProposalCollaborator">
+            <summary>
+            Model use to interact with db to store proposal users detail
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCollaborator.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCollaborator.ProposalId">
+            <summary>
+            Proposal ForeignKey
+            </summary>
+        </member>
+        <member name="P:HTT.Models.ProposalCollaborator.InvitedUserID">
+            <summary>
+            invited user email 
+            </summary>
+        </member>
+        <member name="T:HTT.Models.Question">
+            <summary>
+            Question
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Question.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Question.Name">
+            <summary>
+            Question 
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Question.Order">
+            <summary>
+            position\order
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Question.Status">
+            <summary>
+            Record status
+            </summary>
+        </member>
+        <member name="T:HTT.Models.Symptom">
+            <summary>
+            Symptom
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Symptom.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Symptom.Name">
+            <summary>
+            Symptom Name
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Symptom.Order">
+            <summary>
+            Symptom position\order
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Symptom.Status">
+            <summary>
+            Symptom status
+            </summary>
+        </member>
+        <member name="T:HTT.Models.Tag">
+            <summary>
+            Tag an item to make it searchable
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Tag.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Tag.Name">
+            <summary>
+            Tage name
+            </summary>
+        </member>
+        <member name="T:HTT.Models.Zone">
+            <summary>
+            Zone
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Zone.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Zone.Name">
+            <summary>
+            Location Name
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Zone.Order">
+            <summary>
+            Location position\order
+            </summary>
+        </member>
+        <member name="P:HTT.Models.Zone.Status">
+            <summary>
+            Record status
+            </summary>
+        </member>
+        <member name="T:HTT.Models.HealthTrackQuestionAnswerViewModel">
+            <summary>
+            HealthTrackQuestionAnswerViewModel
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrackQuestionAnswerViewModel.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrackQuestionAnswerViewModel.HealthTrackId">
+            <summary>
+            HealthTrack ForeignKey
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:HTT.Models.HealthTrackQuestionAnswerViewModel.QuestionId" -->
+        <!-- Badly formed XML comment ignored for member "P:HTT.Models.HealthTrackQuestionAnswerViewModel.Question" -->
+        <member name="P:HTT.Models.HealthTrackQuestionAnswerViewModel.value">
+            <summary>
+            value
+            </summary>
+        </member>
+        <member name="T:HTT.Models.HealthTrackSymptomViewModel">
+            <summary>
+            HealthTrack
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrackSymptomViewModel.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrackSymptomViewModel.HealthTrackId">
+            <summary>
+            HealthTrackId
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrackSymptomViewModel.SymptomId">
+            <summary>
+            SymptomId
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrackSymptomViewModel.Name">
+            <summary>
+            Symptom Name
+            </summary>
+        </member>
+        <member name="P:HTT.Models.HealthTrackSymptomViewModel.value">
+            <summary>
+            value
+            </summary>
+        </member>
+        <member name="T:HTT.Program">
+            <summary>
+            Program class
+            </summary>
+        </member>
+        <member name="M:HTT.Program.Main(System.String[])">
+            <summary>
+            main method
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:HTT.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            web host builder
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HTT.Program.ConfigureAppConfig(System.String[],Microsoft.Extensions.Configuration.IConfigurationBuilder)">
+            <summary>
+            Configure app config
+            </summary>
+            <param name="args"></param>
+            <param name="config"></param>
+        </member>
+        <member name="T:HTT.Repository.Context">
+            <summary>
+            Offer portal context
+            </summary>
+            <summary>
+            Offer portal db set
+            </summary>
+        </member>
+        <member name="M:HTT.Repository.Context.#ctor">
+            <summary>
+            ctor default
+            </summary>
+        </member>
+        <member name="M:HTT.Repository.Context.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{HTT.Repository.Context})">
+            <summary>
+            ctor 
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="M:HTT.Repository.Context.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            On model creating event
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="M:HTT.Repository.Context.SeedData">
+            <summary>
+            Get set data on db creation
+            </summary>
+        </member>
+        <member name="P:HTT.Repository.Context.Location">
+            <summary>
+            Locations
+            </summary>
+        </member>
+        <member name="P:HTT.Repository.Context.Zone">
+            <summary>
+            Zones
+            </summary>
+        </member>
+        <member name="P:HTT.Repository.Context.Symptom">
+            <summary>
+            Symptoms
+            </summary>
+        </member>
+        <member name="P:HTT.Repository.Context.Question">
+            <summary>
+            Questions
+            </summary>
+        </member>
+        <member name="P:HTT.Repository.Context.Employee">
+            <summary>
+            Employee
+            </summary>
+        </member>
+        <member name="P:HTT.Repository.Context.HealthTrack">
+            <summary>
+            HealthTrack
+            </summary>
+        </member>
+        <member name="P:HTT.Repository.Context.HealthTrackQuestionAnswer">
+            <summary>
+            HealthTrackQuestionAnswer
+            </summary>
+        </member>
+        <member name="P:HTT.Repository.Context.HealthTrackSymptom">
+            <summary>
+            HealthTrackSymptom
+            </summary>
+        </member>
+        <member name="M:HTT.Repository.ModelBuilderExtensions.Seed(HTT.Repository.Context)">
+            <summary>
+            Get set data on db creation
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:HTT.Repository.ContextFactory">
+            <summary>
+            To Enable migration; IDesignTimeDbContextFactory need to be implemented
+            </summary>
+        </member>
+        <member name="M:HTT.Repository.ContextFactory.#ctor">
+            <summary>
+            CTOR of context factory
+            </summary>
+        </member>
+        <member name="M:HTT.Repository.ContextFactory.CreateDbContext(System.String[])">
+            <summary>
+            Create db context
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HTT.Repository.Contracts.IHealthTrackRepository">
+            <summary>
+            HealthTrackRepository 
+            </summary>
+        </member>
+        <member name="M:HTT.Repository.Contracts.IHealthTrackRepository.CreateHealthTrack(HTT.Models.HealthTrack)">
+            <summary>
+             This method is used to save new health track
+            </summary>
+            <param name="healthTrack"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HTT.Repository.SeedData.LocationConfiguration">
+            <summary>
+            confirgure location data
+            </summary>
+        </member>
+        <member name="M:HTT.Repository.SeedData.LocationConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{HTT.Models.Location})">
+            <summary>
+            configure master data
+            </summary>
+        </member>
+        <member name="T:HTT.Repository.SeedData.QuestionConfiguration">
+            <summary>
+            confirgure Question data
+            </summary>
+        </member>
+        <member name="M:HTT.Repository.SeedData.QuestionConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{HTT.Models.Question})">
+            <summary>
+            configure master data
+            </summary>
+        </member>
+        <member name="T:HTT.Repository.SeedData.SymptomConfiguration">
+            <summary>
+            confirgure Symptom data
+            </summary>
+        </member>
+        <member name="M:HTT.Repository.SeedData.SymptomConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{HTT.Models.Symptom})">
+            <summary>
+            configure master data
+            </summary>
+        </member>
+        <member name="T:HTT.Repository.SeedData.ZoneConfiguration">
+            <summary>
+            confirgure Zone data
+            </summary>
+        </member>
+        <member name="M:HTT.Repository.SeedData.ZoneConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{HTT.Models.Zone})">
+            <summary>
+            configure master data
+            </summary>
+        </member>
+        <member name="T:HTT.Repository.Services.HealthTrackRepository">
+             <summary>
+            HealthTrackRepository
+             Here all method should be async
+             </summary>
+        </member>
+        <member name="M:HTT.Repository.Services.HealthTrackRepository.#ctor(HTT.Repository.Context)">
+            <summary>
+            Ctor
+            context injection\creation
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:HTT.Repository.Services.HealthTrackRepository.CreateHealthTrack(HTT.Models.HealthTrack)">
+            <summary>
+            This method is used to Create Health Track
+            </summary>       
+        </member>
+        <member name="T:HTT.Startup">
+            <summary>
+            class start up
+            </summary>
+        </member>
+        <member name="M:HTT.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            Start up
+            </summary>
+            <param name="configuration"></param>
+            <param name="environment"></param>
+        </member>
+        <member name="P:HTT.Startup.Configuration">
+            <summary>
+            Configuration
+            </summary>
+        </member>
+        <member name="P:HTT.Startup.Environment">
+            <summary>
+            Environment
+            </summary>
+        </member>
+        <member name="P:HTT.Startup.SwaggerInfo">
+            <summary>
+            swagger info
+            </summary>
+        </member>
+        <member name="M:HTT.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:HTT.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger{HTT.Startup})">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:HTT.Startup.ConfigureSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            swagger configuration
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="T:HTT.ViewModels.CategoryViewModel">
+            <summary>
+            Category view model
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.CategoryViewModel.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.CategoryViewModel.Name">
+            <summary>
+            category Name
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.CategoryViewModel.Order">
+            <summary>
+            Category position\order
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.CategoryViewModel.ContentDetails">
+            <summary>
+            Collection ContentDetail
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.CategoryViewModel.ProposalCategories">
+            <summary>
+            Collection ProposalCategory
+            </summary>
+        </member>
+        <member name="T:HTT.ViewModels.CollaboratorViewModel">
+            <summary>
+            Model use to interact with db to store content users
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.CollaboratorViewModel.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.CollaboratorViewModel.InvitedUserID">
+            <summary>
+            Invited user email 
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.CollaboratorViewModel.ReferenceId">
+            <summary>
+            this ReferenceId will carry the id either for proposal or for content
+            </summary>
+        </member>
+        <member name="T:HTT.ViewModels.ContentBEViewModel">
+            <summary>
+            Content BE View Model
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentBEViewModel.Id">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentBEViewModel.Title">
+            <summary>
+            Title
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentBEViewModel.CreatedBy">
+            <summary>
+            Created by
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentBEViewModel.Collaborators">
+            <summary>
+            Content Collaborators
+            </summary>
+        </member>
+        <member name="T:HTT.ViewModels.ContentControlViewModel">
+            <summary>
+            Content control view model
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentControlViewModel.Id">
+            <summary>
+            Primary key
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentControlViewModel.ControlTypeId">
+            <summary>
+            Control Type Id- Primary key of Control type
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentControlViewModel.ControlValue">
+            <summary>
+            Control Value
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentControlViewModel.ControlOrderNo">
+            <summary>
+            controls order under content detail
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentControlViewModel.ControlType">
+            <summary>
+            Control Type entity
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentControlViewModel.ControlContent">
+            <summary>
+            ControlContent
+            </summary>
+        </member>
+        <member name="T:HTT.ViewModels.ContentDetailViewModel">
+            <summary>
+            Model use to interact with db to store content writer content details
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentDetailViewModel.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentDetailViewModel.TagsIDs">
+            <summary>
+            save tag - comma separated 
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentDetailViewModel.Category">
+            <summary>
+            Category
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentDetailViewModel.ValidUntil">
+            <summary>
+            valid date of content
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentDetailViewModel.ValidUntilFurtherNotice">
+            <summary>
+            Is valid 
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentDetailViewModel.ContentDetails">
+            <summary>
+            content id if content copied from available content
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentDetailViewModel.IsCheckedOut">
+            <summary>
+            set when any user open content in edit mode
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentDetailViewModel.CheckedOutBy">
+            <summary>
+            set when any user open content in edit mode
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentDetailViewModel.ContentCollaborators">
+            <summary>
+            Collection ContentCollaborator
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentDetailViewModel.ContentControls">
+            <summary>
+            Collection ContentControl
+            </summary>
+        </member>
+        <member name="T:HTT.ViewModels.ContentListBEViewModel">
+            <summary>
+            Content list BE View Model
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentListBEViewModel.InProgressOwnContents">
+            <summary>
+            In-Progress user own contents
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentListBEViewModel.FinishedOwnContents">
+            <summary>
+            Finished user own contents
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentListBEViewModel.InProgressSharedContents">
+            <summary>
+            In-Progress shared contents
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentListBEViewModel.FinishedSharedContents">
+            <summary>
+            Finished shared contents
+            </summary>
+        </member>
+        <member name="T:HTT.ViewModels.ContentViewModel">
+            <summary>
+            Content view model
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentViewModel.Id">
+            <summary>
+            Primary key
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentViewModel.TagsIDs">
+            <summary>
+            Tag ids comma seprated value
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentViewModel.CategoryId">
+            <summary>
+            Category Id
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentViewModel.CategoryName">
+            <summary>
+            CategoryName
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentViewModel.ValidUntil">
+            <summary>
+            Valid until
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentViewModel.ValidUntilFurtherNotice">
+            <summary>
+            Is valid until further notice
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentViewModel.ParentId">
+            <summary>
+            Content detail id if new or copy from existing contents
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentViewModel.IsCheckedOut">
+            <summary>
+            is file checked out
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentViewModel.CheckedOutBy">
+            <summary>
+            file checked out by user
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentViewModel.CreatedtBy">
+            <summary>
+            created by user id
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentViewModel.PhotoFile">
+            <summary>
+            PhotoFile
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentViewModel.ContentControls">
+            <summary>
+            Collection Content Control
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ContentViewModel.Status">
+            <summary>
+            Record status
+            </summary>
+        </member>
+        <member name="T:HTT.ViewModels.ControlTypeViewModel">
+            <summary>
+             control view model
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ControlTypeViewModel.Id">
+            <summary>
+            Primary key
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ControlTypeViewModel.Type">
+            <summary>
+            Type 
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ControlTypeViewModel.Description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="T:HTT.ViewModels.FileViewModel">
+            <summary>
+            File Management
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.FileViewModel.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.FileViewModel.UploadedName">
+            <summary>
+            File changed name
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.FileViewModel.FileName">
+            <summary>
+            File original name
+            </summary>
+        </member>
+        <member name="T:HTT.ViewModels.HealthTrackViewModel">
+            <summary>
+            Health Track View Model
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.HealthTrackViewModel.Id">
+            <summary>
+            Primary key
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.HealthTrackViewModel.ResidentialAddress">
+            <summary>
+            ResidentialAddress
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.HealthTrackViewModel.PreExistHealthIssue">
+            <summary>
+            PreExistHealthIssue
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.HealthTrackViewModel.ContactWithCovidPeople">
+            <summary>
+            ContactWithCovidPeople
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.HealthTrackViewModel.TravelOustSideInLast15Days">
+            <summary>
+            TravelOustSideInLast15Days
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.HealthTrackViewModel.SampleDate">
+            <summary>
+            SampleDate
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.HealthTrackViewModel.LocationId">
+            <summary>
+            LocationId
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.HealthTrackViewModel.ZoneId">
+            <summary>
+            file checked out by user
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.HealthTrackViewModel.EmployeeId">
+            <summary>
+            created by user id
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.HealthTrackViewModel.HealthTrackSymptoms">
+             <summary>
+            Health Track Symptoms
+             </summary>
+        </member>
+        <member name="P:HTT.ViewModels.HealthTrackViewModel.HealthTrackQuestions">
+             <summary>
+            Health Track Question Answer ViewModel
+             </summary>
+        </member>
+        <member name="P:HTT.ViewModels.HealthTrackViewModel.Status">
+            <summary>
+            Status
+            </summary>
+        </member>
+        <member name="T:HTT.ViewModels.ProposalBEViewModel">
+            <summary>
+            Proposal Collaborator View Model 
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalBEViewModel.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalBEViewModel.Title">
+            <summary>
+            Title
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalBEViewModel.CreatedBy">
+            <summary>
+            Created by
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalBEViewModel.Collaborators">
+            <summary>
+            Proposal Collaborators
+            </summary>
+        </member>
+        <member name="T:HTT.ViewModels.ProposalCategoryControlViewModel">
+            <summary>
+            Proposal Category Control ViewModel
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalCategoryControlViewModel.Id">
+            <summary>
+            Primary key
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalCategoryControlViewModel.ControlTypeId">
+            <summary>
+            Control type entity
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalCategoryControlViewModel.ControlValue">
+            <summary>
+            Control value
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalCategoryControlViewModel.OldFileUploadedName">
+            <summary>
+            OldFileUploadedName used in case of update control image
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalCategoryControlViewModel.IsFileChange">
+            <summary>
+            IsFileChange used in case of update control image
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalCategoryControlViewModel.ControlOrderNo">
+            <summary>
+            Control order number
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalCategoryControlViewModel.IsDragDisable">
+            <summary>
+            IsDragDisable
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalCategoryControlViewModel.ControlType">
+            <summary>
+            ControlType
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalCategoryControlViewModel.ControlContent">
+            <summary>
+            ControlContent
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalCategoryControlViewModel.IsValid">
+            <summary>
+            Used for validation purposes
+            </summary>
+        </member>
+        <member name="T:HTT.ViewModels.ProposalCategoryViewModel">
+            <summary>
+            Proposal Category View Model
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalCategoryViewModel.Id">
+            <summary>
+            Primary key
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalCategoryViewModel.SectionTitle">
+            <summary>
+            Section title
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalCategoryViewModel.CategoryId">
+            <summary>
+            Category model entity
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalCategoryViewModel.CategoryName">
+            <summary>
+            CategoryName
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalCategoryViewModel.ProposalCategoryControls">
+            <summary>
+            Proposal category control entity
+            </summary>
+        </member>
+        <member name="T:HTT.ViewModels.ProposalEmailViewModel">
+            <summary>
+            Proposal Email view model
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalEmailViewModel.Id">
+            <summary>
+            Proposal identifier
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalEmailViewModel.Title">
+            <summary>
+            Proposal title
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalEmailViewModel.ProposalOwner">
+            <summary>
+            Proposal created by
+            </summary>
+        </member>
+        <member name="T:HTT.ViewModels.ProposalListBEViewModel">
+            <summary>
+            Content list BE View Model
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalListBEViewModel.InProgressProposals">
+            <summary>
+            In-Progress user
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalListBEViewModel.FinishedProposals">
+            <summary>
+            Finished user
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalListBEViewModel.InProgressSharedProposals">
+            <summary>
+            In-Progress shared 
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalListBEViewModel.FinishedSharedProposals">
+            <summary>
+            Finished shared
+            </summary>
+        </member>
+        <member name="T:HTT.ViewModels.ProposalViewModel">
+            <summary>
+            Proposal view model
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalViewModel.Id">
+            <summary>
+            Primary key
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalViewModel.Title">
+            <summary>
+            Title
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalViewModel.Date">
+            <summary>
+            Date
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalViewModel.CoverPhotoFile">
+            <summary>
+            proposal cover photo
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalViewModel.OldFileUploadedName">
+            <summary>
+            OldFileUploadedName used in case of update proposal image
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalViewModel.IsFileChange">
+            <summary>
+            IsFileChange used in case of update control image
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalViewModel.IsCheckedOut">
+            <summary>
+            IsCheckedOut
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalViewModel.CheckedOutBy">
+            <summary>
+            file checked out by user
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalViewModel.CreatedBy">
+            <summary>
+            created by user id
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalViewModel.ProposalCategories">
+            <summary>
+            Proposal category entity
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.ProposalViewModel.Status">
+            <summary>
+            Proposal status
+            </summary>
+        </member>
+        <member name="T:HTT.ViewModels.TagViewModel">
+            <summary>
+            Tag veiw model an item to make it searchable
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.TagViewModel.Id">
+            <summary>
+            primary key
+            </summary>
+        </member>
+        <member name="P:HTT.ViewModels.TagViewModel.Name">
+            <summary>
+            Tage name
+            </summary>
+        </member>
+    </members>
+</doc>

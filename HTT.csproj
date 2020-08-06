@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+   <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
+    <AspNetCoreModuleName>AspNetCoreModule</AspNetCoreModuleName>
+    <AssemblyName>HTT</AssemblyName>
+    <RootNamespace>HTT</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>.\HTT.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\CommonController.cs" />
+    <Compile Remove="Controllers\ContentDetailController.cs" />
+    <Compile Remove="Controllers\FileController.cs" />
+    <Compile Remove="Controllers\ProposalController.cs" />
+    <Compile Remove="Manager\Service\CategoryService.cs" />
+    <Compile Remove="Manager\Service\ContentDetailService.cs" />
+    <Compile Remove="Manager\Service\ControlTypeService.cs" />
+    <Compile Remove="Manager\Service\FileDetailService.cs" />
+    <Compile Remove="Manager\Service\ProposalDetailService.cs" />
+    <Compile Remove="Manager\Service\TagService.cs" />
+    <Compile Remove="Manager\Service\ViewRenderService.cs" />
+    <Compile Remove="Repository\Contracts\ICategoryRepository.cs" />
+    <Compile Remove="Repository\Contracts\IContentCollaboratorRepository.cs" />
+    <Compile Remove="Repository\Contracts\IContentDetailRepository.cs" />
+    <Compile Remove="Repository\Contracts\IControlTypeRepository.cs" />
+    <Compile Remove="Repository\Contracts\IFileDetailRepository.cs" />
+    <Compile Remove="Repository\Contracts\IProposalCollaboratorRepository.cs" />
+    <Compile Remove="Repository\Contracts\IProposalDetailRepository.cs" />
+    <Compile Remove="Repository\Contracts\ITagRepository.cs" />
+    <Compile Remove="Repository\Services\CategoryRepository.cs" />
+    <Compile Remove="Repository\Services\ContentCollaboratorRepository.cs" />
+    <Compile Remove="Repository\Services\ContentDetailRepository.cs" />
+    <Compile Remove="Repository\Services\ControlTypeRepository.cs" />
+    <Compile Remove="Repository\Services\FileDetailRepository.cs" />
+    <Compile Remove="Repository\Services\ProposalCollaboratorRepository.cs" />
+    <Compile Remove="Repository\Services\ProposalDetailRepository.cs" />
+    <Compile Remove="Repository\Services\TagRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.0.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
+    <PackageReference Include="Serilog.Sinks.ColoredConsole" Version="3.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+    <PackageReference Include="ValueInjecter" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="Content\Uploads\" />
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="HTT.sln" />
+  </ItemGroup>
+
+</Project>
